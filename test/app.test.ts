@@ -10,18 +10,18 @@ const getUrl = (pathname?: string): string => url.format({
   hostname: app.get('host') || 'localhost',
   protocol: 'http',
   port,
-  pathname
+  pathname,
 });
 
 describe('Feathers application tests', () => {
   let server: Server;
 
-  before(function(done) {
+  before((done) => {
     server = app.listen(port);
     server.once('listening', () => done());
   });
 
-  after(function(done) {
+  after((done) => {
     server.close(done);
   });
 
@@ -31,13 +31,13 @@ describe('Feathers application tests', () => {
     assert.ok(data.indexOf('<html lang="en">') !== -1);
   });
 
-  describe('404', function() {
+  describe('404', () => {
     it('shows a 404 HTML page', async () => {
       try {
         await axios.get(getUrl('path/to/nowhere'), {
           headers: {
-            'Accept': 'text/html'
-          }
+            Accept: 'text/html',
+          },
         });
         assert.fail('should never get here');
       } catch (error) {
