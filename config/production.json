@@ -1,0 +1,4 @@
+{
+  "host": "sonar-backend-app.feathersjs.com",
+  "port": "PORT"
+}
